@@ -41,6 +41,7 @@ import org.kaaproject.kaa.common.hash.EndpointObjectHash;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.FileSystemException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.InvalidKeyException;
@@ -78,7 +79,7 @@ public class KaaClientPropertiesStateTest {
     return props;
   }
 
-  @Test(expected = KaaRuntimeException.class)
+  @Test(expected = AssertionError.class)
   public void testInitKeys() throws IOException, InvalidKeyException {
     KaaClientState state = new KaaClientPropertiesState(new FilePersistentStorage(), CommonsBase64.getInstance(),
         getProperties());
@@ -117,7 +118,7 @@ public class KaaClientPropertiesStateTest {
     new File(WORK_DIR + KEY_PRIVATE).delete();
   }
 
-  @Test(expected = KaaRuntimeException.class)
+  @Test(expected = FileSystemException.class)
   public void testDefaultStrategyRecreateKeys() throws IOException, InvalidKeyException, NoSuchAlgorithmException {
     KaaClientState state = new KaaClientPropertiesState(new FilePersistentStorage(), CommonsBase64.getInstance(),
         getProperties());
@@ -145,7 +146,7 @@ public class KaaClientPropertiesStateTest {
     state.getPrivateKey();
   }
 
-  @Test(expected = KaaRuntimeException.class)
+  @Test(expected = AssertionError.class)
   public void testInitKeys2() throws IOException, InvalidKeyException {
     KaaClientState state = new KaaClientPropertiesState(new FilePersistentStorage(), CommonsBase64.getInstance(),
         getProperties());

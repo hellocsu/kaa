@@ -51,8 +51,18 @@
             <artifactId>dto</artifactId>
         </dependency>
         <dependency>
+           <!-- <groupId>com.twitter.common</groupId>
+            <artifactId>thrift</artifactId>-->
             <groupId>com.twitter.common</groupId>
             <artifactId>thrift</artifactId>
+            <version>${twitter.common.thrift.version}</version>
+            <!--<exclusions>
+                &lt;!&ndash;service-thrift:0.2.19无法找到&ndash;&gt;
+                <exclusion>
+                    <groupId>com.twitter.common</groupId>
+                    <artifactId>service-thrift</artifactId>
+                </exclusion>
+            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>

@@ -52,7 +52,7 @@ Copyright 2014-2016 CyberVision, Inc.
         <gwtchosen.version>1.2.0</gwtchosen.version>
         <gwtquery.version>1.4.2</gwtquery.version>
         <aspectj.version>1.7.4</aspectj.version>
-        <twitter.common.thrift.version>0.0.64</twitter.common.thrift.version>
+        <twitter.common.thrift.version>0.0.68</twitter.common.thrift.version>
 
         <hadoop.version>2.4.1</hadoop.version>
         <flume.version>1.5.0.1</flume.version>
@@ -374,12 +374,17 @@ Copyright 2014-2016 CyberVision, Inc.
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.5.1</version>
+                    <version>3.7.0</version>
+                    <!--非常重要，配置默认的jdk参数-->
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
+                        <verbose>true</verbose>
+                        <fork>true</fork>
+                        <executable>${JAVA8_HOME}/bin/javac</executable>
                     </configuration>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
@@ -396,7 +401,7 @@ Copyright 2014-2016 CyberVision, Inc.
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.9.1</version>
+                    <version>3.0.0</version>
                     <configuration>
                         <detectOfflineLinks>true</detectOfflineLinks>
                         <excludePackageNames>
@@ -638,6 +643,14 @@ Copyright 2014-2016 CyberVision, Inc.
 
     <dependencyManagement>
         <dependencies>
+             <!--tool.jar-->
+            <dependency>
+                <groupId>jdk.tools</groupId>
+                <artifactId>jdk.tools</artifactId>
+                <version>1.8</version>
+                <scope>system</scope>
+                <systemPath>${JAVA8_HOME}/lib/tools.jar</systemPath>
+            </dependency>
             <dependency>
                 <groupId>org.kaaproject.kaa.server.common</groupId>
                 <artifactId>server-shared</artifactId>
@@ -1432,10 +1445,11 @@ Copyright 2014-2016 CyberVision, Inc.
         </repository>
         <repository>
             <id>central</id>
-            <url>http://repo1.maven.org/maven2/</url>
+            <!--<url>http://repo1.maven.org/maven2/</url>-->
+            <url>http://central.maven.org/maven2/</url>
         </repository>
         <repository>
-            <id>twitter-twttr</id>
+            <id>repository.twitter</id>
             <url>http://maven.twttr.com/</url>
         </repository>
         <repository>        
