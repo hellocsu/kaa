@@ -174,10 +174,10 @@ Copyright 2014-2016 CyberVision, Inc.
             </modules>
             <build>
                 <plugins>
-                    <plugin>
+                    <!--<plugin>
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>0.7.5.201505241946</version>
+                        <version>0.8.2-SNAPSHOT</version>
                         <executions>
                             <execution>
                                 <id>pre-test</id>
@@ -202,10 +202,11 @@ Copyright 2014-2016 CyberVision, Inc.
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
+                    </plugin>-->
+                    <!--<plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.18</version>
+                        <version>2.21.0</version>
                         <configuration>
                             <argLine>${jacoco.agent.it.argLine}</argLine>
                             <systemPropertyVariables>
@@ -257,8 +258,8 @@ Copyright 2014-2016 CyberVision, Inc.
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
+                    </plugin>-->
+                    <!--<plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
@@ -270,16 +271,16 @@ Copyright 2014-2016 CyberVision, Inc.
                                 </property>
                             </properties>
                         </configuration>
-                    </plugin>
+                    </plugin>-->
                 </plugins>
             </build>
             <dependencies>
-                <dependency>
+               <!-- <dependency>
                     <groupId>org.codehaus.sonar-plugins.java</groupId>
                     <artifactId>sonar-jacoco-listeners</artifactId>
                     <version>2.5</version>
                     <scope>test</scope>
-                </dependency>
+                </dependency>-->
             </dependencies>
         </profile>
         <profile>
@@ -299,10 +300,10 @@ Copyright 2014-2016 CyberVision, Inc.
             <id>license</id>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>com.mycila.maven-license-plugin</groupId>
-                        <artifactId>maven-license-plugin</artifactId>
-                        <version>1.8.0</version>
+                   <!-- <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>license-maven-plugin</artifactId>
+                        <version>1.16</version>
                         <configuration>
                             <header>copyright.txt</header>
                             <strictCheck>true</strictCheck>
@@ -361,7 +362,7 @@ Copyright 2014-2016 CyberVision, Inc.
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin>-->
                 </plugins>
             </build>
         </profile>
@@ -454,7 +455,7 @@ Copyright 2014-2016 CyberVision, Inc.
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -473,7 +474,7 @@ Copyright 2014-2016 CyberVision, Inc.
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -493,7 +494,7 @@ Copyright 2014-2016 CyberVision, Inc.
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -512,7 +513,7 @@ Copyright 2014-2016 CyberVision, Inc.
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -532,7 +533,8 @@ Copyright 2014-2016 CyberVision, Inc.
             </plugins>
         </pluginManagement>
         <plugins>
-            <plugin>
+         <!--    check style ignore-->
+          <!--  <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${checkstyle.version}</version>
@@ -558,11 +560,11 @@ Copyright 2014-2016 CyberVision, Inc.
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
+            </plugin>-->
+            <!--<plugin>
                 <groupId>org.apache.rat</groupId>
                 <artifactId>apache-rat-plugin</artifactId>
-                <version>${rat.version}</version>
+                <version>0.13-SNAPSHOT</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*.json</exclude>
@@ -622,15 +624,15 @@ Copyright 2014-2016 CyberVision, Inc.
                         <exclude>gh-pages-stub/</exclude>
 
                         <exclude>nix/astyle/max_indent.patch</exclude>
-                        <!-- backported from nixpkgs -->
+                        &lt;!&ndash; backported from nixpkgs &ndash;&gt;
                         <exclude>nix/avro-c++/</exclude>
 
-                        <!-- Auto-generated -->
+                        &lt;!&ndash; Auto-generated &ndash;&gt;
                         <exclude>nix/kaa-docs/Gemfile.lock</exclude>
                         <exclude>nix/kaa-docs/gemset.nix</exclude>
                     </excludes>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 
@@ -1387,7 +1389,7 @@ Copyright 2014-2016 CyberVision, Inc.
     <reporting>
         <plugins>
             <!-- Requires setting 'export MAVEN_OPTS="-Xmx512m" ' -->
-            <plugin>
+           <!-- <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
                 <version>${findbugs.version}</version>
@@ -1399,8 +1401,8 @@ Copyright 2014-2016 CyberVision, Inc.
                     <effort>Default</effort>
                     <excludeFilterFile>${main.dir}/findbugs-exclude-filter.xml</excludeFilterFile>
                 </configuration>
-            </plugin>
-            <plugin>
+            </plugin>-->
+            <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>taglist-maven-plugin</artifactId>
                 <version>2.4</version>
@@ -1411,7 +1413,7 @@ Copyright 2014-2016 CyberVision, Inc.
                         <tag>NOTE</tag>
                     </tags>
                 </configuration>
-            </plugin>
+            </plugin>-->
             <!-- uncomment when all licence headers will be added <plugin>
                 <groupId>org.apache.rat</groupId> <artifactId>apache-rat-plugin</artifactId>
                 <version>${rat.version}</version> </plugin> -->
