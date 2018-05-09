@@ -29,7 +29,7 @@ public class PingConnectivityCheckerTest {
 
   @Test
   public void checkConnectivityToSomeHostTest() {
-    PingConnectivityChecker pingConnectivityChecker = new PingConnectivityChecker("google.com");
+    PingConnectivityChecker pingConnectivityChecker = new PingConnectivityChecker("baidu.com");
     Assert.assertTrue(pingConnectivityChecker.checkConnectivity());
   }
 }
